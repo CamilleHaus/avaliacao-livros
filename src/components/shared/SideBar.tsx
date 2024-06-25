@@ -1,5 +1,5 @@
-import { Book, LineChart, LogIn, Telescope } from "lucide-react";
-import Link from "next/link";
+import { Book, LineChart, LogIn, Telescope } from 'lucide-react'
+import Link from 'next/link'
 
 const SideBar = () => {
   return (
@@ -9,22 +9,28 @@ const SideBar = () => {
           <Book size={24} /> Bookwise
         </h3>
         <div className="flex flex-col gap-4 w-full">
-          <Link href={"/"} className="flex gap-2 pl-2 hover:border-l-2 hover:border-white">
+          <Link
+            href={'/'}
+            className="flex gap-2 pl-2 hover:border-l-2 hover:border-white"
+          >
             <LineChart size={24} />
             Inicio
           </Link>
-          <Link href={"/explorar"} className="flex gap-2 pl-2 hover:border-l-2 hover:border-white">
+          <Link
+            href={'/explorar'}
+            className="flex gap-2 pl-2 hover:border-l-2 hover:border-white"
+          >
             <Telescope />
             Explorar
           </Link>
         </div>
       </div>
-      <Link href={"/login"} className="flex gap-2 pb-4">
+      <Link href={'/login'} className="flex gap-2 pb-4">
         <LogIn />
         Fazer Login
       </Link>
     </div>
-  );
-};
+  )
+}
 
-export default SideBar;
+export default SideBar

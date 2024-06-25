@@ -1,9 +1,7 @@
-import SideBar from "@/components/shared/SideBar";
+import SideBar from '@/components/shared/SideBar'
 
 const HomePage: React.FC = () => {
-  return (
-    <SideBar />
-  );
-};
+  return <SideBar />
+}
 
-export default HomePage;
+export default HomePage
