@@ -1,9 +1,8 @@
+import SideBar from "@/components/shared/SideBar";
+
 const HomePage: React.FC = () => {
   return (
-    <div>
-      <h1>Home Page</h1>
-      {/* Adicione aqui o conteúdo da página inicial */}
-    </div>
+    <SideBar />
   );
 };
 
