@@ -1,6 +1,8 @@
 import { Button } from '@/components/ui/button'
 import ModeToggle from '@/components/ui/light-dark-toggle'
-import { Book, Rocket } from 'lucide-react'
+import { Rocket } from 'lucide-react';
+import BookLogo from  "../../../public/svgs/bookLogo.svg"
+import BookWise from "../../../public/svgs/bookwise.svg";
 
 import Link from 'next/link'
 
@@ -9,8 +11,8 @@ const LoginPage: React.FC = () => {
     <div className="flex w-full justify-center">
       <div className="mt-4 flex h-[95vh] w-[95%] gap-6">
         <div className="flex w-[40%] items-center justify-center rounded-md bg-login bg-cover">
-          <h3 className="flex items-center gap-2 text-3xl font-bold">
-            <Book size={32} /> Bookwise
+          <h3 className="flex items-center gap-2 w-full justify-center">
+          <BookLogo /><BookWise />
           </h3>
         </div>
         <div className="relative flex w-[60%] flex-col items-center justify-center gap-10">

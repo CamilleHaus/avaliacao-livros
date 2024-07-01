@@ -52,6 +52,10 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        first: "#181C2A",
+        stars: "#8180D6",
+        icons: "#50B2C0",
+        back: "#0E1116",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -74,7 +78,7 @@ const config = {
       },
       backgroundImage: {
         "login": "url(/assets/login-page.jpg)",
-        "gradient": "url(/assets/gradient-sidebar.png)"
+        "gradient": "url(/svgs/background.svg)"
       }
     },
   },
@@ -82,3 +86,4 @@ const config = {
 } satisfies Config
 
 export default config
+

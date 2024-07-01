@@ -3,6 +3,7 @@
 import { books } from "@/dbMock/dbBooks";
 import Image from "next/image";
 import { useState } from "react";
+import StarRating from "./StarRating";
 
 const RatedBook = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -18,9 +19,10 @@ const RatedBook = () => {
   };
 
   return (
-    <div className="flex flex-col gap-10 mt-6">
+    <div className="flex flex-col gap-4 mt-4">
+      <p className="text-sm text-gray-200">Avaliações mais recentes</p>
       {books.map((book) => (
-        <li className="flex flex-col gap-6 max-w-[600px] bg-sky-950 p-6 rounded-md">
+        <li className="flex flex-col gap-6 w-[100%] max-w-[650px] bg-first p-6 rounded-md">
           <div className="flex justify-between">
             <div className="flex gap-4 items-center pb-4">
               <Image
@@ -35,7 +37,7 @@ const RatedBook = () => {
                 <p>{book.date}</p>
               </div>
             </div>
-            <p>{book.rating}</p>
+            <StarRating size= {24} rating={book.rating}/>
           </div>
           <div className="flex gap-6">
             <div className="relative w-24 h-36">

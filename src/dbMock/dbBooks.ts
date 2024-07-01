@@ -13,7 +13,7 @@ export const books = [
         authorImg: '/assets/Book.png',
         name: 'Jackson Dias',
         date: 'date',
-        rating: 2,
+        rating: 3,
         bookImg: '/assets/Book.png',
         title: 'O Hobbit',
         description:
