@@ -5,7 +5,7 @@ import { LineChart } from "lucide-react";
 
 const Home = () => {
     return (
-            <div className='w-full bg-back h-[100vh]'>
+            <div className='w-full'>
                 <div className="w-[95%] flex justify-between">
                     <SideBar />
                         <div className="mt-14 flex flex-col gap-6">
