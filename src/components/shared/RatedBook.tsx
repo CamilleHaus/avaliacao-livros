@@ -19,28 +19,28 @@ const RatedBook = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 mt-4">
+    <div className="mt-4 flex flex-col gap-4">
       <p className="text-sm text-gray-200">Avaliações mais recentes</p>
       {books.map((book) => (
-        <li className="flex flex-col gap-6 w-[100%] max-w-[650px] bg-first p-6 rounded-md">
+        <li className="flex w-[100%] max-w-[650px] flex-col gap-6 rounded-md bg-first p-6">
           <div className="flex justify-between">
-            <div className="flex gap-4 items-center pb-4">
+            <div className="flex items-center gap-4 pb-4">
               <Image
                 src={book.authorImg}
                 alt="Image of author"
                 width={50}
                 height={20}
-                className="rounded-full object-cover w-12 h-12"
+                className="h-12 w-12 rounded-full object-cover"
               />
               <div>
                 <p>{book.name}</p>
                 <p>{book.date}</p>
               </div>
             </div>
-            <StarRating size= {24} rating={book.rating}/>
+            <StarRating size={24} rating={book.rating} />
           </div>
           <div className="flex gap-6">
-            <div className="relative w-24 h-36">
+            <div className="relative h-36 w-24">
               <Image
                 src={book.bookImg}
                 alt="Image of book"
@@ -48,7 +48,7 @@ const RatedBook = () => {
                 objectFit="cover"
               />
             </div>
-            <div className="flex flex-col justify-between flex-1">
+            <div className="flex flex-1 flex-col justify-between">
               <p className="pb-4">{book.title}</p>
               <div>
                 <p>
