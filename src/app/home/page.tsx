@@ -2,16 +2,18 @@
 
 import LastRead from "@/components/shared/LastRead";
 import PopularBooks from "@/components/shared/PopularBooks";
-import RatedBook from "@/components/shared/RatedBook";
+import RatedBook, { IRecentReview } from "@/components/shared/RatedBook";
 import SideBar from "@/components/shared/SideBar";
 import {  UserContext } from "@/context/UserContext";
+import axiosAPI from "@/lib/api";
 import { ChevronRight, LineChart } from "lucide-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Home = () => {
   const userContext = React.useContext(UserContext)
 
   const user = userContext?.user
+
 
   return (
     <div className="w-full">
