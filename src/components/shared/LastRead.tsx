@@ -1,15 +1,18 @@
 "use client"
 
-import Image from "next/image";
 import StarRating from "./StarRating";
-import { useEffect, useState } from "react";
-import axiosAPI from "@/lib/api";
-import { IRecentReview } from "./RatedBook";
+import { useState } from "react";
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
+import React from "react";
+import { BooksContext } from "@/context/booksContext";
 
 const LastRead = () => {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const booksContext = React.useContext(BooksContext)
+
+  const userLastReview = booksContext?.userLastReview
 
   const truncateText = (text: string, maxLength: number) => {
     return text.length <= maxLength
@@ -20,25 +23,6 @@ const LastRead = () => {
   const toggleExpanded = () => {
     setIsExpanded(!isExpanded);
   };
-
-  const [userLastReview, setUserLastReviews] = useState<IRecentReview | null>(null);
-
-  useEffect(() => {
-    const getRecentuserLastReviews = async () => {
-      try {
-        const { data } = await axiosAPI.get("/recent-reviews");
-
-        const recentReviews = data.recentReviews;
-        const userLastReview = recentReviews[recentReviews.length - 1];
-
-        setUserLastReviews(userLastReview);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getRecentuserLastReviews();
-  }, []);
 
   
   if (!userLastReview) {
@@ -54,11 +38,9 @@ const LastRead = () => {
           className="flex w-[100%] max-w-[650px] gap-10 rounded-md bg-first p-6"
         >
           <div className="relative h-36 w-[20%]">
-            <Image
-              src={userLastReview.user.avatarURL}
+            <img
+              src={userLastReview.user.avatarUrl}
               alt="Image of book"
-              layout="fill"
-              objectFit="cover"
             />
           </div>
           <div className="flex w-full flex-col">

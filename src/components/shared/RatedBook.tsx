@@ -1,35 +1,24 @@
 "use client";
 
-import { books } from "@/dbMock/dbBooks";
 import Image from "next/image";
-import { MouseEventHandler, useEffect, useState } from "react";
+import { useState } from "react";
 import StarRating from "./StarRating";
-import axiosAPI from "@/lib/api";
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
+import React from "react";
+import { BooksContext } from "@/context/booksContext";
 
-export interface IRecentReview {
-  id: string;
-  rating: number;
-  createdAt: string;
-  user: {
-    avatarURL: string;
-    name: string;
-  };
-  book: {
-    author: {
-      name: string;
-    };
-    coverUrl: string;
-    description: string;
-    name: string;
-  };
-}
 
 const RatedBook = () => {
+
+  const booksContext = React.useContext(BooksContext)
+
+  const recentReviews = booksContext?.recentReviews
+
+  console.log(recentReviews)
+  
   const [isExpanded, setIsExpanded] = useState<{ [key: string]: boolean }>({});
 
-  const [recentReviews, setRecentReviews] = useState<IRecentReview[]>([]);
 
   const truncateText = (text: string, maxLength: number) => {
     return text.length <= maxLength
@@ -43,22 +32,7 @@ const RatedBook = () => {
       [id]: !prev[id],
     }));
   };
-
-  useEffect(() => {
-    const getRecentReviews = async () => {
-      try {
-        const { data } = await axiosAPI.get("/recent-reviews");
-
-        const recentReviews = data.recentReviews;
-
-        setRecentReviews(recentReviews);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getRecentReviews();
-  }, []);
+  
 
   return (
     <div className="mt-4 flex flex-col gap-4">
@@ -70,15 +44,15 @@ const RatedBook = () => {
         >
           <div className="flex justify-between">
             <div className="flex items-center gap-4 pb-4">
-              <Image
-                src={review.book.coverUrl}
+              <img
+                src={review.user.avatarUrl}
                 alt="Image of author"
                 width={50}
                 height={20}
                 className="h-12 w-12 rounded-full object-cover"
               />
               <div>
-                <p>{review.book.author.name}</p>
+                <p>{review.user.name}</p>
                 <p className="text-sm">
                   {formatDistanceToNow(new Date(review.createdAt), {
                     addSuffix: true,

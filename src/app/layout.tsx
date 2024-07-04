@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { UserProvider } from "@/context/UserContext";
+import { BooksProvider } from "@/context/booksContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +26,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <UserProvider>{children}</UserProvider>
+          <UserProvider>
+            <BooksProvider>{children}</BooksProvider>
+          </UserProvider>
         </ThemeProvider>
       </body>
     </html>
